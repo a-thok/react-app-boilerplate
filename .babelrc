@@ -1,0 +1,12 @@
+{
+  "presets": [
+    ["es2015", { "modules": false }],
+    "react"
+  ],
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-async-to-generator",
+    "transform-class-properties",
+    "react-hot-loader/babel"
+  ]
+}

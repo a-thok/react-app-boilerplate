@@ -1,0 +1,37 @@
+@import 'styles/vars.css';
+
+:root {
+  --padding: 0.625em;
+}
+
+.form {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.input {
+  flex: 1;
+  padding: var(--padding) 0.8em;
+  border-width: 1px 0 1px 1px;
+  border-style: solid;
+  border-color: var(--grey);
+  outline: 0;
+}
+
+.input:focus {
+  border-color: var(--theme);
+}
+
+.button {
+  padding: var(--padding) 1.6em;
+  border: 1px solid var(--theme);
+  background-color: var(--theme);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: var(--theme-darker);
+}

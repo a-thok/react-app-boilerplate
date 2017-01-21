@@ -1,0 +1,102 @@
+@import 'styles/vars.css';
+
+:root {
+  --min-height: 4rem;
+  --item-padding: 0.625em;
+}
+
+/* list */
+.wrapper {
+  position: relative;
+  list-style: none;
+  width: 90%;
+  min-height: var(--min-height);
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  font-size: 1.5rem;
+}
+
+.wrapper::before {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: "";
+  width: 100%;
+  height: var(--min-height);
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.2),
+    0 8px 0 -3px #f6f6f6,
+    0 9px 1px -3px rgba(0, 0, 0, 0.2),
+    0 16px 0 -6px #f6f6f6,
+    0 17px 2px -6px rgba(0, 0, 0, 0.2);
+}
+
+.msg {
+  padding: var(--item-padding);
+  text-align: center;
+}
+
+.msg-hidden {
+  composes: msg;
+  display: none;
+}
+
+/* list */
+.list {
+  composes: reset from 'styles/helper.css';
+}
+
+/* item */
+.item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 1em;
+  border-bottom: 1px solid var(--grey);
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+.toggle {
+  appearance: none;
+  width: 1.5em;
+  height: 1.5em;
+  border: 1px solid #efefef;
+  border-radius: 50%;
+  outline: 0;
+  text-align: center;
+  line-height: 1.5em;
+}
+
+.toggle:checked::before {
+  content: "\f00c";
+  color: var(--theme);
+}
+
+.content {
+  composes: reset from 'styles/helper.css';
+  flex: 1;
+  padding: var(--item-padding);
+}
+
+.content-completed {
+  composes: content;
+  text-decoration: line-through;
+}
+
+.remove {
+  border: 0;
+  background: transparent;
+  color: var(--danger);
+  opacity: 0;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+
+.item:hover .remove {
+  opacity: 1;
+}

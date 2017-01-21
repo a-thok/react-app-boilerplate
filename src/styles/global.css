@@ -1,0 +1,35 @@
+html {
+  line-height: 1.5;
+  box-sizing: border-box;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 20rem) {
+  html {
+    font-size: calc(0.875rem + (1 - 0.875) * (100vw - 33.75rem) / (33.75 - 20));
+  }
+}
+
+@media (min-width: 33.75rem) {
+  html {
+    font-size: 1rem;
+  }
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "San Francisco", Helvetica, Arial, "Microsoft Yahei", "PingFang SC", "Heiti SC", sans-serif;
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
