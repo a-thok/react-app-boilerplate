@@ -6,7 +6,7 @@ class Nav extends Component {
   static links = [
     { path: '/todoList', name: '待办事项表' },
     { path: '/addtodo', name: '添加事项' },
-  ];
+  ]
 
   render() {
     return (

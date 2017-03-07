@@ -3,6 +3,10 @@ import { browserHistory } from 'react-router';
 import style from './addTodo.css';
 
 class AddTodo extends React.PureComponent {
+  static propTypes = {
+    addTodo: React.PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -46,9 +50,5 @@ class AddTodo extends React.PureComponent {
     );
   }
 }
-
-AddTodo.propTypes = {
-  addTodo: React.PropTypes.func.isRequired,
-};
 
 export default AddTodo;

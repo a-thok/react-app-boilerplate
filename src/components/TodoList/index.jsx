@@ -4,6 +4,15 @@ import style from './todoList.css';
 
 // 优先继承PureComponent，这样的组件性能更好
 class TodoList extends PureComponent {
+  // 详细、正确地定义propTypes
+  // 这能帮助捕获简单的错误，且能一眼清晰地看出此组件所接收的全部props（包括actions）
+  static propTypes = {
+    requests: PropTypes.number.isRequired,
+    todos: PropTypes.arrayOf(PropTypes.object).isRequired,
+    toggleTodo: PropTypes.func.isRequired,
+    removeTodo: PropTypes.func.isRequired,
+  }
+
   get isEmpty() {
     const { requests, todos } = this.props;
     return requests <= 0 && todos.length <= 0;
@@ -27,15 +36,6 @@ class TodoList extends PureComponent {
     );
   }
 }
-
-// 详细、正确地定义propTypes
-// 这能帮助捕获简单的错误，且能一眼清晰地看出此组件所接收的全部props（包括actions）
-TodoList.propTypes = {
-  requests: PropTypes.number.isRequired,
-  todos: PropTypes.arrayOf(PropTypes.object).isRequired,
-  toggleTodo: PropTypes.func.isRequired,
-  removeTodo: PropTypes.func.isRequired,
-};
 
 // 在文件的最后一行导出组件
 export default TodoList;
