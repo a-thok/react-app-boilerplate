@@ -1,5 +1,11 @@
-const api = {
-  getTodos: '/api/todos',
+const apis = {
+  getTodos: '/todos',
 };
 
-export default api;
+if (process.env.NODE_ENV === 'development') {
+  Object.keys(apis).forEach((key) => {
+    apis[key] = `/api${apis[key]}`;
+  });
+}
+
+export default apis;
