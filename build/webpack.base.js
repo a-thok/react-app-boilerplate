@@ -1,11 +1,10 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const postcssImport = require('postcss-import');
-const autoprefixer = require('autoprefixer');
-const postcssVariables = require('postcss-css-variables');
+const cssnext = require('postcss-cssnext');
 
 const config = require('./config');
-const manifest = require('../public/react-manifest.json');
+const manifest = require('../public/vendor-manifest.json');
 
 module.exports = {
   entry: [
@@ -51,8 +50,20 @@ module.exports = {
           postcssImport({
             path: [config.srcPath],
           }),
-          autoprefixer(),
-          postcssVariables(),
+          cssnext({
+            features: {
+              customMedia: false,
+              mediaQueriesRange: false,
+              customSelectors: false,
+              attributeCaseInsensitive: false,
+              colorRebeccapurple: false,
+              colorHwb: false,
+              colorHsl: false,
+              colorGray: false,
+              colorHexAlpha: false,
+              overflowWrap: false,
+            },
+          }),
         ],
         context: __dirname,
       },

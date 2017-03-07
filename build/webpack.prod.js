@@ -1,9 +1,9 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const webpackConfig = require('./webpack.config');
+const baseConfig = require('./webpack.base');
 const config = require('./config');
 
-module.exports = Object.assign({}, webpackConfig, {
+module.exports = Object.assign({}, baseConfig, {
   output: {
     path: config.distPath,
     publicPath: config.publicPath,
@@ -12,13 +12,13 @@ module.exports = Object.assign({}, webpackConfig, {
 
   module: {
     rules: [
-      ...webpackConfig.module.rules,
+      ...baseConfig.module.rules,
 
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: [
+          fallback: 'style-loader',
+          use: [
             'css-loader?minimize&sourceMap&importLoaders=1&module&localIdentName=[hash:base64:5]',
             'postcss-loader',
           ],
@@ -30,7 +30,7 @@ module.exports = Object.assign({}, webpackConfig, {
   devtool: 'source-map',
 
   plugins: [
-    ...webpackConfig.plugins,
+    ...baseConfig.plugins,
 
     new webpack.DefinePlugin({
       'process.env': {

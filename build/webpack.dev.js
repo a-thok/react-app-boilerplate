@@ -1,11 +1,11 @@
 const webpack = require('webpack');
-const webpackConfig = require('./webpack.config');
+const baseConfig = require('./webpack.base');
 const config = require('./config');
 
-module.exports = Object.assign({}, webpackConfig, {
+module.exports = Object.assign({}, baseConfig, {
   entry: [
     'react-hot-loader/patch',
-    ...webpackConfig.entry,
+    ...baseConfig.entry,
   ],
 
   output: {
@@ -16,7 +16,7 @@ module.exports = Object.assign({}, webpackConfig, {
 
   module: {
     rules: [
-      ...webpackConfig.module.rules,
+      ...baseConfig.module.rules,
 
       {
         test: /\.jsx?$/,
@@ -65,7 +65,7 @@ module.exports = Object.assign({}, webpackConfig, {
   },
 
   plugins: [
-    ...webpackConfig.plugins,
+    ...baseConfig.plugins,
 
     new webpack.NoEmitOnErrorsPlugin(),
 
